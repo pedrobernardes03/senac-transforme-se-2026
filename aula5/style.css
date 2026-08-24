@@ -1,0 +1,122 @@
+body {
+    background-color: #FEFEFE;
+    font-family: "Roboto Mono", monospace;
+    font-optical-sizing: auto;
+    font-weight: 400;
+    /* peso da fonte, quanto maior mais "negrito ela fica"  */
+    font-style: normal;
+    color: #000000;
+    margin: 0;
+
+}
+
+h2 {
+    color: #333333;
+}
+
+p {
+    color: #000000
+}
+
+a {
+    color: #1616a9;
+    text-decoration: none;
+}
+
+#about {
+    /*# siginifica que é um id */
+    background-color: #e2e8f7;
+
+}
+
+section {
+    /*margin: 0 5% 50px 5%; TOP RIGHT BOTTOM LEFT*/
+    /*margin: 0 5% no eixo Y eixo X */
+    /*margin: 5% tudo*/
+
+}
+
+.max-w-lg {
+    /*maxima - largura(wideth)- large)*/
+    /*o ponto indica que é uma classe*/
+    max-width: 800px;
+}
+
+.mx-auto {
+    /*m: margem; x: eixo; auto:automatico*/
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.py-2 {
+    /*p: padding; y: eixo; 2:expoente do numero de pixels*/
+    padding-top: 4px;
+    padding-bottom: 4px;
+}
+
+.py-3 {
+    padding-top: 8px;
+    padding-bottom: 8px;
+}
+
+.py-4 {
+    padding-top: 16px;
+    padding-bottom: 16px;
+}
+
+.py-5 {
+    padding-top: 32px;
+    padding-bottom: 32px;
+}
+
+.px-2 {
+    padding-left: 4px;
+    padding-right: 4px;
+}
+
+.px-3 {
+    padding-left: 8px;
+    padding-right: 8px;
+}
+
+.px-4 {
+    padding-left: 16px;
+    padding-right: 16px;
+}
+
+.px-5 {
+    padding-left: 32px;
+    padding-right: 32px;
+}
+
+.p-2 {
+    padding: 4px;
+}
+
+.bg-blue{
+    background-color: #191eae;
+}
+
+.text-white{
+    color: #FFFFFF;
+}
+
+.rounded{ /*arredondamento*/
+    border-radius: 4px;
+}
+
+.rounded-md{
+    border-radius: 6px;
+}
+
+.rounded-lg{
+    border-radius: 8px;
+}
+
+.rounded-xl{
+    border-radius: 12px;
+}
+
+.rounded-full{
+    border-radius: 9999px;
+}

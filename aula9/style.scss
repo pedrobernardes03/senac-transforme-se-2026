@@ -1,0 +1,750 @@
+/* =========================================================
+   AULA 5/6 - SCSS
+   Curso Popular
+
+   Este arquivo será compilado para style.css
+   ========================================================= */
+
+
+/* =========================================================
+   1. VARIÁVEIS
+   ========================================================= */
+
+$color-background: #fefefe;
+$color-text: #000000;
+$color-title: #333333;
+$color-paragraph: #030539;
+$color-link: #2212b1;
+
+$color-primary: #191eae;
+$color-secondary: #fefefe;
+$color-dark: #000000;
+$color-white: #ffffff;
+
+$color-about: #e2e8f7;
+$color-prices: #d5dff9;
+$color-feature: #e2e8f7;
+
+@import url('https://fonts.googleapis.com/css2?family=Roboto+Mono:ital,wght@0,100..700;1,100..700&family=Roboto:ital,wght@0,100..900;1,100..900&display=swap');
+$font-primary: "Roboto Mono", monospace, normal;
+$font-secondary: 'Lucida Sans', Verdana, sans-serif;
+
+
+/* =========================================================
+   2. CORES
+
+   Podemos guardar várias informações em um MAP.
+   ========================================================= */
+
+$backgrounds: (
+    "primary": $color-primary,
+    "secondary": $color-secondary,
+    "dark": $color-dark,
+    "white": $color-white,
+    "about": $color-about,
+    "feature": $color-feature,
+    "prices": $color-prices
+);
+
+$text-colors: (
+    "white": $color-white,
+    "dark": $color-dark,
+    "primary": $color-primary,
+    "secondary": $color-secondary
+);
+
+
+/* =========================================================
+   3. ESPAÇAMENTOS
+
+   Mantendo os valores utilizados no seu CSS atual.
+   ========================================================= */
+
+$pixels: (
+    /* name: value */
+    1: 2px,
+    2: 4px,
+    3: 8px,
+    4: 16px,
+    5: 32px,
+    6: 64px
+);
+
+
+/* =========================================================
+   4. BORDER RADIUS
+   ========================================================= */
+
+$radius: (
+    default: 4px,
+    md: 6px,
+    lg: 8px,
+    xl: 12px,
+    full: 9999px
+);
+
+
+/* =========================================================
+   5. SHADOWS
+   ========================================================= */
+
+$shadows: (
+    default: 0 1px 3px rgba(0, 0, 0, 0.15),
+    md: 0 4px 6px rgba(0, 0, 0, 0.15),
+    lg: 0 10px 15px rgba(0, 0, 0, 0.15),
+    inner: inset 0 2px 4px rgba(0, 0, 0, 0.25)
+);
+
+
+/* =========================================================
+   6. MIXINS
+
+   Mixin funciona como uma função de CSS.
+   ========================================================= */
+
+@mixin box-shadow($shadow) {
+    box-shadow: $shadow;
+    -webkit-box-shadow: $shadow;
+}
+
+/*
+    Cria um estado como:
+
+    hover:shadow-inner
+    focus:shadow
+    active:shadow-inner
+
+    O SCSS transforma isso em CSS normal.
+*/
+
+@mixin state($state, $utility) {
+    .#{$state}\:#{$utility}:#{$state} {
+        @content;
+    }
+}
+
+
+
+/* =========================================================
+   7. SELETORES POR TAG
+   ========================================================= */
+
+body {
+    background-color: $color-background;
+    font-family: $font-primary;
+    font-weight: 400;
+    color: $color-text;
+    margin: 0;
+}
+
+
+h2 {
+    color: $color-title;
+}
+
+
+p {
+    color: $color-paragraph;
+    font-family: $font-secondary;
+}
+
+
+a {
+    color: $color-link;
+    text-decoration: none;
+    font-family: $font-secondary;
+}
+
+
+/*
+    Exemplos de margin:
+
+    4 lados:
+    margin: 50px;
+
+    Y X:
+    margin: 50px 0;
+
+    TOP RIGHT BOTTOM LEFT:
+    margin: 0 5% 50px 5%;
+*/
+
+
+/* =========================================================
+   8. SELETORES POR ID
+   ========================================================= */
+
+#about {
+    background-color: $color-about;
+}
+
+#prices{
+    background-color: $color-prices;
+}
+
+#feature {
+    background-color: $color-feature;
+}
+
+
+/* =========================================================
+   9. MAX WIDTH
+   ========================================================= */
+
+.max-w-md {
+    max-width: 500px;
+}
+
+
+.max-w-lg {
+    max-width: 800px;
+}
+
+
+/* =========================================================
+   10. MARGIN
+
+   @each cria automaticamente as classes.
+   ========================================================= */
+
+
+
+/* m- */
+//loop
+@each $name, $value in $pixels {
+    .m-#{$name} {
+        margin: $value;
+    }
+}
+
+
+/* mt- */
+@each $name, $value in $pixels {
+    .mt-#{$name} {
+        margin-top: $value;
+    }
+}
+
+/* mb-* */
+@each $name, $value in $pixels {
+    .mb-#{$name} {
+        margin-bottom: $value;
+    }
+
+}
+
+/* ml-* */
+@each $name, $value in $pixels {
+    .ml-#{$name} {
+        margin-left: $value;
+    }
+}
+
+
+
+
+
+/* mr-* */
+@each $name, $value in $pixels {
+    .mr-#{$name} {
+        margin-right: $value;
+    }
+}
+
+
+/* mx */
+@each $name, $value in $pixels {
+    .mx-#{$name} {
+        margin-right: $value;
+        margin-left: $value;
+    }
+}
+
+/* my */
+@each $name, $value in $pixels {
+    .my-#{$name} {
+        margin-top: $value;
+        margin-bottom: $value;
+    }
+}
+
+.mx-auto {
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.my-auto {
+    margin-top: auto;
+    margin-bottom: auto;
+}
+
+
+/* =========================================================
+   11. PADDING
+   ========================================================= */
+
+$variant: (
+    "":padding,
+    "t":padding-top,
+    "l":padding-left,
+    "r":padding-right,
+    "b":padding-bottom
+);
+
+@each $number, $pixel in $pixels {
+    @each  $n, $v in $variant{
+       .p#{$n}-#{$number} {
+            #{$v}: $pixel
+       } 
+    }  
+}
+
+
+
+/* px */
+@each $name, $value in $pixels {
+    .px-#{$name} {
+        padding-right: $value;
+        padding-left: $value;
+    }
+}
+
+/* py */
+@each $name, $value in $pixels {
+    .py-#{$name} {
+        padding-top: $value;
+        padding-bottom: $value;
+    }
+}
+
+
+/* =========================================================
+   12. BACKGROUND
+
+   As classes serão criadas automaticamente:
+
+   .bg-primary
+   .bg-secondary
+   .bg-dark
+   ========================================================= */
+
+@each $name, $color in $backgrounds {
+    .bg-#{$name} {
+        background-color: $color;
+    }
+}
+
+
+
+/* =========================================================
+   13. BACKGROUND + HOVER
+
+   Aqui começa a vantagem do SCSS.
+
+   Para cada background o SCSS também gera:
+
+   hover:bg-primary
+   hover:bg-secondary
+   hover:bg-dark
+   ========================================================= */
+
+@each $name, $color in $backgrounds {
+    @include state("hover", "bg-#{$name}") {
+        background-color: $color;
+    }
+}
+
+
+/* =========================================================
+   14. BACKGROUND + FOCUS
+   ========================================================= */
+
+@each $name, $color in $backgrounds {
+    @include state("focus", "bg-#{$name}") {
+        background-color: $color;
+    }
+}
+
+
+/* =========================================================
+   15. BACKGROUND + ACTIVE
+   ========================================================= */
+
+@each $name, $color in $backgrounds {
+    @include state("active", "bg-#{$name}") {
+        background-color: $color;
+    }
+}
+
+
+/* =========================================================
+   16. CORES DE TEXTO
+   ========================================================= */
+
+@each $name, $color in $text-colors {
+    .text-#{$name} {
+        color: $color;
+    }
+}
+
+
+/* =========================================================
+   17. TEXTO + HOVER
+   ========================================================= */
+
+@each $name, $color in $text-colors {
+    @include state("hover", "text-#{$name}") {
+        color: $color;
+    }
+}
+
+
+/* =========================================================
+   18. ALINHAMENTO DO TEXTO
+   ========================================================= */
+
+$text-alignments: (
+    left: left,
+    center: center,
+    right: right,
+    justify: justify
+);
+
+@each $name, $value in $text-alignments {
+    .text-#{$name} {
+        text-align: $value;
+    }
+}
+
+
+/* =========================================================
+   19. BORDER RADIUS
+   ========================================================= */
+
+@each $name, $value in $radius {
+    @if $name == default {
+        .rounded {
+            border-radius: $value;
+        }
+    }
+    @else {
+        .rounded-#{$name} {
+            border-radius: $value;
+        }
+    }
+}
+
+
+/* =========================================================
+   20. WIDTH
+   ========================================================= */
+
+.w-full {
+    width: 100%;
+}
+
+
+/* =========================================================
+   21. DISPLAY
+   ========================================================= */
+
+.block {
+    display: block;
+}
+
+.flex {
+    display: flex;
+}
+
+
+/* =========================================================
+   22. FLEX ALIGNMENT
+   ========================================================= */
+
+.items-center {
+    align-items: center;
+}
+
+.items-start {
+    align-items: flex-start;
+}
+
+.items-end {
+    align-items: flex-end;
+}
+
+
+/* Horizontal */
+.justify-start {
+    justify-content: flex-start;
+}
+
+
+.justify-center {
+    justify-content: center;
+}
+
+
+.justify-end {
+    justify-content: flex-end;
+}
+
+
+.justify-between {
+    justify-content: space-between;
+}
+
+
+/*
+    Muito útil dentro de um FLEX.
+
+    Empurra o item para a direita porque
+    sua margem esquerda ocupa todo o
+    espaço restante.
+*/
+
+.ml-auto {
+    margin-left: auto;
+}
+
+
+/* =========================================================
+   23. GAP
+   ========================================================= */
+
+$gaps: (
+    2: 8px,
+    4: 16px,
+    8: 32px
+);
+
+
+@each $name, $value in $gaps {
+    .gap-#{$name} {
+        gap: $value;
+    }
+}
+
+
+/* =========================================================
+   24. SHADOW
+
+   Cria:
+
+   shadow
+   shadow-md
+   shadow-lg
+   shadow-inner
+   ========================================================= */
+
+@each $name, $shadow in $shadows {
+    @if $name == default {
+        .shadow {
+            @include box-shadow($shadow);
+        }
+    }
+    @else {
+        .shadow-#{$name} {
+            @include box-shadow($shadow);
+        }
+    }
+}
+
+
+/* =========================================================
+   25. HOVER + SHADOW
+
+   Gera automaticamente:
+
+   hover:shadow
+   hover:shadow-md
+   hover:shadow-lg
+   hover:shadow-inner
+   ========================================================= */
+
+@each $name, $shadow in $shadows {
+    @if $name == default {
+        @include state("hover", "shadow") {
+            @include box-shadow($shadow);
+        }
+    }
+
+    @else {
+        @include state("hover", "shadow-#{$name}") {
+            @include box-shadow($shadow);
+        }
+    }
+}
+
+
+/* =========================================================
+   26. FOCUS + SHADOW
+   ========================================================= */
+
+@each $name, $shadow in $shadows {
+    @if $name == default {
+        @include state("focus", "shadow") {
+            @include box-shadow($shadow);
+        }
+    }
+
+    @else {
+        @include state("focus", "shadow-#{$name}") {
+            @include box-shadow($shadow);
+        }
+    }
+}
+
+
+/* =========================================================
+   27. ACTIVE + SHADOW
+   ========================================================= */
+
+@each $name, $shadow in $shadows {
+    @if $name == default {
+        @include state("active", "shadow") {
+            @include box-shadow($shadow);
+        }
+    }
+    @else {
+        @include state("active", "shadow-#{$name}") {
+            @include box-shadow($shadow);
+        }
+    }
+}
+
+
+/* =========================================================
+   28. TRANSIÇÕES
+
+   Faz hover/focus/active acontecerem suavemente.
+   ========================================================= */
+
+.transition {
+    transition: all 0.2s ease;
+}
+
+
+/* =========================================================
+   29. SCALE
+   ========================================================= */
+
+.hover\:scale-105:hover {
+    transform: scale(1.05);
+}
+
+
+.active\:scale-95:active {
+    transform: scale(0.95);
+}
+
+
+/* =========================================================
+   30. FOCUS
+   ========================================================= */
+
+.focus\:outline-none:focus {
+    outline: none;
+}
+
+
+.focus\:outline-primary:focus {
+    outline: 2px solid $color-primary;
+    outline-offset: 2px;
+}
+
+
+/* =========================================================
+   31. DISABLED
+
+   Funciona especialmente em button/input.
+   ========================================================= */
+
+.disabled\:opacity-50:disabled {
+    opacity: 0.5;
+}
+
+
+.disabled\:cursor-not-allowed:disabled {
+    cursor: not-allowed;
+}
+
+
+/* =========================================================
+   32. CURSOR
+   ========================================================= */
+
+.cursor-pointer {
+    cursor: pointer;
+}
+
+
+/* =========================================================
+   33. POSITION
+   ========================================================= */
+
+.absolute {
+    position: absolute;
+}
+
+
+.fixed {
+    position: fixed;
+}
+
+
+.relative {
+    position: relative;
+}
+
+
+.sticky {
+    position: sticky;
+}
+
+
+/* =========================================================
+   34. POSIÇÕES
+   ========================================================= */
+
+.top-0 {
+    top: 0;
+}
+
+
+.bottom-0 {
+    bottom: 0;
+}
+
+
+.left-0 {
+    left: 0;
+}
+
+
+.right-0 {
+    right: 0;
+}
+
+
+/*
+    Mantém sua classe antiga também.
+*/
+
+.right {
+    right: 0;
+}
+
+
+/* =========================================================
+   35. Z-INDEX
+   ========================================================= */
+
+.z-10 {
+    z-index: 10;
+}
+
+
+.z-50 {
+    z-index: 50;
+}
