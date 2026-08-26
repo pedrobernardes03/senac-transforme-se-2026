@@ -2,16 +2,20 @@ var users = JSON.parse(localStorage.getItem("users")) || [] // parse: reverte de
 
 var logado = JSON.parse(localStorage.getItem("logado")) || {}
 var welcome = document.getElementById("welcome")
-if(welcome && logado) welcome.innerHTML = "Olá " + logado.nome
+if (welcome && logado) welcome.innerHTML = "Olá " + logado.nome
 
 var logUsers = document.getElementById("logUsers")
-if(logUsers)
-    logUsers.innerHTML = JSON.stringify(users,null,4)
+if (logUsers){
+    users.forEach((u) => {
+        console.log(u)
+    });
+}
+    
 
 
 var formR = document.getElementById("formRegister");
-formR?.addEventListener("submit", (e) => { // Listener reconhece que o button foi acionado 
-// "formR?" = if(formL)    
+formR?.addEventListener("click", (e) => { // Listener reconhece que o button foi acionado 
+    // "formR?" = if(formL)    
     e.preventDefault(); //impede atualizar a tela
 
     let name = document.getElementById("iName").value
@@ -27,12 +31,18 @@ formR?.addEventListener("submit", (e) => { // Listener reconhece que o button fo
     }
     users.push(user)
     localStorage.setItem("users", JSON.stringify(users)) // stringfy: transforma em texto (string)
-    
+
+    const modalRegister = document.getElementById("modalRegister");
+    modalRegister.classList.remove("flex");
+    modalRegister.classList.add("hidden");
+    window.location.href = "painel.html"
+
 })
 
-var formL = document.getElementById("formLogin")
-if(formL)formL.addEventListener("submit", (e) => {
+varbtL = document.getElementById("btLogin");
+if(btL) btL.addEventListener("click", (e) => {
     e.preventDefault();
+
 
     let email = document.getElementById("lEmail").value
     let password = document.getElementById("lPassword").value
@@ -50,7 +60,7 @@ if(formL)formL.addEventListener("submit", (e) => {
         console.log("usuario logado")
         localStorage.setItem("logado", JSON.stringify(user))
         window.location.href = "painel.html"
-        
+
     } else {
         console.log("senha invalida")
     }

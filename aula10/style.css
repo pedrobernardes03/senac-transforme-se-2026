@@ -535,6 +535,14 @@ a {
   background-color: #d5dff9;
 }
 
+.bg-black-50 {
+  background-color: rgba(0, 0, 0, 0.5);
+}
+
+.bg-red {
+  background-color: #e90c0c;
+}
+
 /* =========================================================
    13. BACKGROUND + HOVER
 
@@ -574,6 +582,14 @@ a {
   background-color: #d5dff9;
 }
 
+.hover\:bg-black-50:hover {
+  background-color: rgba(0, 0, 0, 0.5);
+}
+
+.hover\:bg-red:hover {
+  background-color: #e90c0c;
+}
+
 /* =========================================================
    14. BACKGROUND + FOCUS
    ========================================================= */
@@ -605,6 +621,14 @@ a {
   background-color: #d5dff9;
 }
 
+.focus\:bg-black-50:focus {
+  background-color: rgba(0, 0, 0, 0.5);
+}
+
+.focus\:bg-red:focus {
+  background-color: #e90c0c;
+}
+
 /* =========================================================
    15. BACKGROUND + ACTIVE
    ========================================================= */
@@ -634,6 +658,14 @@ a {
 
 .active\:bg-prices:active {
   background-color: #d5dff9;
+}
+
+.active\:bg-black-50:active {
+  background-color: rgba(0, 0, 0, 0.5);
+}
+
+.active\:bg-red:active {
+  background-color: #e90c0c;
 }
 
 /* =========================================================

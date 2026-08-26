@@ -2,37 +2,27 @@
 
 <head>
     <title>Login</title>
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Roboto+Mono:ital,wght@0,100..700;1,100..700&display=swap"
-        rel="stylesheet">
     <link rel="stylesheet" href="style.css">
 </head>
 
-<body class="bg-about">
-    <nav class="flex items-center py-2 px-3 shadow-md fixed w-full bg-secondary top-0">
-        <a class="py-2 px-3 bg-primary text-white rounded-md hover:shadow-inner ml-auto mr-4 shadow"
-            href="index.html">Voltar</a>
-    </nav>
-    <main>
-        <section>
-        <div class="text-center pt-6">
-            <div class="bg-secondary max-w-md mx-auto rounded-xl">
-        <h2 class="text-primary">Login</h2>
+<body>
+    <a href="index.html" class="py-2 px-3 bg-primary text-white rounded-md hover:shadow-inner ml-auto mr-4 shadow">Voltar</a>
+    <div class="h-full flex">
+        <div class="max-w-sm mx-auto my-auto p-5 bg-feature rounded-lg shadow-md flex column">
+            <h2 class="text-primary">Login</h2>
             
-        <form id="formLogin">
-            <article>
-            Email: <input id="lEmail" type="email" placeholder="Digite o seu email" />
-            </article>
-            <article class="mt-2 mb-2">
-            Senha: <input id="lPassword" type="password" placeholder="Digite sua senha" />
-            </article>
-            <button class="py-2 px-3 bg-primary text-white rounded-md hover:shadow-inner ml-auto shadow mb-2" type="submit">Entrar</button>
-        </form>
-        </section>
-    </main>
+            <form class="flex column">
+                <article>
+                    Email: <input id="lEmail" type="email" placeholder="Digite o seu email" />
+                </article>
+                <article class="mt-2 mb-2">
+                    Senha: <input id="lPassword" type="password" placeholder="Digite sua senha" />
+                </article>
+                <a id="btLogin" class="mt-5 bg-primary text-white text-center rounded-md py-2">Entrar</a>
+            </form>
+        </div>
+    </div>
 </body>
-
 
 <pre id="pResponse"></pre>
 

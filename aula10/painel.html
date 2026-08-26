@@ -2,37 +2,37 @@
 
 <head>
     <title>Cadasro de Usuario</title>
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Roboto+Mono:ital,wght@0,100..700;1,100..700&display=swap"
-        rel="stylesheet">
     <link rel="stylesheet" href="style.css">
 </head>
-
-<body class="h-full flex">
-    <div class="h-full flex">
-        <div class="fixed p-5 hidden bg-about rounded-lg shadow-md column">
-            <h3 id="welcome"></h3>
+<body>
+    <h3 id="welcome"></h3>
+    <div id="modalRegister"
+        class="fixed top-0 right-0 bottom-0 left-0 hidden items-center justify-center z-50 bg-black-50">
+        <div class="relative max-w-sm w-full p-5 bg-about rounded-lg shadow-md flex column">
+            <a id="close" class="bg-red text-white absolute top-0 right-0 px-2 rounded-full cursor-pointer">X</a>
             <h2>Cadastro de Usuário</h2>
             <p>Preencha as informações abaixo</p>
-            <form id="formRegister" class="flex column">
-                Nome: <input id="iName" type="text" placeholder="Digite seu nome completo" /><br>
-                Email: <input id="iEmail" type="email" placeholder="Digite o seu melhor email" /><br>
-                Senha: <input id="iPassword" type="password" placeholder="Letra maiuscula e números" /><br>
-                Data de nascimento: <input id="iDate" type="date" /><br>
-                <button type="submit">Salvar</button>
+            <form class="flex column">
+                Nome: <input id="iName" type="text" placeholder="Digite seu nome completo" />
+                Email: <input id="iEmail" type="email" placeholder="Digite o seu melhor email" />
+                Senha: <input id="iPassword" type="password" placeholder="Letra maiuscula e números" />
+                Data de nascimento: <input id="iDate" type="date" />
+                <a id="formRegister" class="mt-5 bg-primary text-white text-center rounded-md py-2 cursor-pointer">Salvar</a>
             </form>
         </div>
     </div>
-
-    <a class="rounded-full bg-primary text-white px-4 py-2 fixed bottom-0"> + </a>
-
-    <pre id="logUsers"></pre>
-
+    <table>
+        <thead>
+            <th>Nome</th>
+            <th>Email</th>
+            <th>Ações</th>
+        <tbody id="logUsers">
+            
+        </tbody>
+        </thead>
+    </table>
+    <a id="addUser" class="rounded-full bg-primary text-white px-4 py-2 fixed bottom-0 right-0 cursor-pointer"> + </a>
+    <script src="user.js"></script>
+    <script src="painel.js"></script>
 </body>
-
-
-
-<script src="user.js"></script>
-
 </html>
