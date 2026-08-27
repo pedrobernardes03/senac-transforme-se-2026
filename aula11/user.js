@@ -4,13 +4,54 @@ var logado = JSON.parse(localStorage.getItem("logado")) || {}
 var welcome = document.getElementById("welcome")
 if (welcome && logado) welcome.innerHTML = "Olá " + logado.nome
 
-var logUsers = document.getElementById("logUsers")
-if (logUsers){
-    users.forEach((u) => {
-        console.log(u)
+var logUsers = document.getElementById("logUsers") // capturando tbody
+if (logUsers) {
+    let i = 0;
+    users.forEach((u) => { /* vetor que cria as linhas e coluna da tabela da tabela*/
+
+        let tdNome = document.createElement("td");
+        tdNome.innerHTML = u.nome;
+        let tdEmail = document.createElement("td"); /* td= table data, colunas */
+        tdEmail.innerHTML = u.email;
+        let tdAction = document.createElement("td");
+        let btV = document.createElement("a");
+        btV.innerHTML = "V";
+        btV.classList.add("show");
+        btV.classList.add("cursor-pointer");
+        btV.id = i;
+        tdAction.appendChild(btV);
+
+        let btT = document.createElement("span");
+        btT.innerHTML = " - "
+        btT.classList.add("show");
+        tdAction.appendChild(btT);
+
+        let btC = document.createElement("a");
+        btC.innerHTML = "X"
+        btC.classList.add("show");
+        tdAction.appendChild(btC);
+
+
+        let tr = document.createElement("tr"); /* tr= table row, linhas */
+        tr.appendChild(tdNome);
+        tr.appendChild(tdEmail);
+        tr.appendChild(tdAction);
+        logUsers.appendChild(tr);
+        //append: junta/anexa
+        //i = i + 1;
+        //i+= 1;
+        i++;
     });
 }
-    
+
+var buttonsV = document.querySelectorAll(".show");
+buttonsV.forEach((b) => {
+    b.addEventListener("click", () => {
+        const id = b.id;
+        b.innerHTML = users[id].nascimento;
+    })
+})
+
 
 
 var formR = document.getElementById("formRegister");
@@ -40,7 +81,7 @@ formR?.addEventListener("click", (e) => { // Listener reconhece que o button foi
 })
 
 var btL = document.getElementById("btLogin");
-if(btL) btL.addEventListener("click", (e) => {
+if (btL) btL.addEventListener("click", (e) => {
     e.preventDefault();
 
 
