@@ -4,6 +4,28 @@ var logado = JSON.parse(localStorage.getItem("logado")) || {}
 var welcome = document.getElementById("welcome")
 if (welcome && logado) welcome.innerHTML = "Olá " + logado.nome
 
+/*  function name(parametro, p2){
+    return
+}*/
+function createButton(text, classes, i) {
+    let bt = document.createElement("a");
+    bt.innerHTML = text;
+    classes.forEach((c) =>{
+        bt.classList.add(c);
+    });
+    
+    
+    bt.classList.add("cursor-pointer");
+    bt.classList.add("px-3");
+    bt.classList.add("text-white");
+    bt.classList.add("hover:shadow");
+    bt.classList.add("shadow-md");
+    bt.classList.add("m-3");
+    bt.classList.add("rounded-full");
+    bt.dataset.id = i;
+    return bt;
+}
+
 var logUsers = document.getElementById("logUsers") // capturando tbody
 if (logUsers) {
     let i = 0;
@@ -14,25 +36,16 @@ if (logUsers) {
         let tdEmail = document.createElement("td"); /* td= table data, colunas */
         tdEmail.innerHTML = u.email;
         let tdAction = document.createElement("td");
-        let btV = document.createElement("a");
-        btV.innerHTML = "V";
-        btV.classList.add("show");
-        btV.classList.add("cursor-pointer");
-        btV.id = i;
-        tdAction.appendChild(btV);
 
-        let btT = document.createElement("span");
-        btT.innerHTML = " - "
-        btT.classList.add("show");
-        tdAction.appendChild(btT);
+        /* 
+        tdAction.appendChild(createButton("V", "show", i)
+                        ==
+        let btV = createElement("V","show", i)
+        tdAction.appendChild(btV)
+        */
+        tdAction.appendChild(createButton("V", ["show", "bg-primary"], i));
 
-        let btC = document.createElement("a");
-        btC.innerHTML = "X"
-        btC.classList.add("show");
-        tdAction.appendChild(btC);
-
-        
-
+        tdAction.appendChild(createButton("X", ["remove", "bg-red"], i));
 
         let tr = document.createElement("tr"); /* tr= table row, linhas */
         tr.appendChild(tdNome);
@@ -40,6 +53,7 @@ if (logUsers) {
         tr.appendChild(tdAction);
         logUsers.appendChild(tr);
         //append: junta/anexa
+          
         //i = i + 1;
         //i+= 1;
         i++;
@@ -49,8 +63,19 @@ if (logUsers) {
 var buttonsV = document.querySelectorAll(".show");
 buttonsV.forEach((b) => {
     b.addEventListener("click", () => {
-        const id = b.id;
+        const id = b.dataset.id;
         b.innerHTML = users[id].nascimento;
+
+    })
+})
+
+var buttonsR = document.querySelectorAll(".remove");
+buttonsR.forEach((b) => {
+    b.addEventListener("click", () => {
+        const id = b.dataset.id;
+        users.splice(id, 1);
+        localStorage.setItem("users", JSON.stringify(users));
+        window.location.href = "painel.html"
     })
 })
 
